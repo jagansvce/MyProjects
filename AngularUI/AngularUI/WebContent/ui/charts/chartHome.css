@@ -1,0 +1,35 @@
+.bar-container {
+	border-left: 2px solid black; 
+	border-bottom: 2px solid black; 
+	padding:2px;
+	width: 50%;
+}
+
+.horizontal-bar {
+	position:relative;
+	margin-top: 55px;
+	margin-bottom: 20px;
+}
+.horizontal-bar .bar-part-1 {
+	left: 0px;
+	background-color:green;
+}
+.horizontal-bar .bar-part-2 {
+	right: 0px;
+	background-color:red;
+}
+
+.horizontal-bar .bar-part-1, .horizontal-bar .bar-part-2 {
+	position:absolute;
+	top: 0px;
+	text-align: center;
+	color: #FFF;
+	font-weight: bold;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.bar-label {
+	position: relative;
+	top:-20px;
+}

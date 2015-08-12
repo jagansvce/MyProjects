@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="chartApp">
+<head>
+<!-- 
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+ -->
+<link rel="stylesheet" href="chartHome.css">
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="chartHome.js"></script>
+</head>
+
+<body ng-controller="ChartCtrl">
+
+	<div class="bar-container">
+		<div ng-repeat="bar in chart.bars" class="horizontal-bar"
+			style="width:{{bar.$width}}%;">
+			<div class="bar-part-1" style="width:{{bar.$width1}}%;">{{bar.value1}}</div>
+			<div class="bar-part-2" style="width:{{bar.$width2}}%;">{{bar.value2}}</div>
+			<div class="bar-label">{{bar.label}}</div>
+		</div>
+	</div>
+
+</body>
+</html>
