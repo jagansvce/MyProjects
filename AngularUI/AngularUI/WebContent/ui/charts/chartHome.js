@@ -47,6 +47,7 @@ chartApp.controller('ChartCtrl', ["$scope", function($scope) {
 			this.$width = (total/$scope.chart.$maxValue) * 100;
 			this.$width1 = (Number(this.value1)/total) * 100;
 			this.$width2 = (Number(this.value2)/total) * 100;
+			this.$successRate = this.$width1.toFixed(2);
 		});
 
 	}
