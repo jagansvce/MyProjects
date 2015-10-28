@@ -1,0 +1,53 @@
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
+
+package test;
+
+import java.io.IOException;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+public class Two {
+
+	public static void main(String[] args) {
+
+		Document doc;
+		try {
+			System.setProperty("http.proxyHost", "proxy-nc.wellsfargo.com"); // set proxy server
+            System.setProperty("http.proxyPort", "8080");
+
+			// need http protocol
+			doc = Jsoup.connect("http://www.scottclarkhonda.com/searchused.aspx?make=Honda&bodystyle=Sport+Utility+Vehicle&model=CR-V").get();
+
+			// get all links
+			Elements inventories = doc.select("div.row.srpVehicle");
+			int ind=1;
+			for (Element inventory : inventories) {
+				Element title = inventory.select(".vehicleTitle.margin-x").get(0);
+				Element internetPrice = inventory.select("li.internetPrice>span").get(0);
+				Element mileageDisplay = inventory.select("li.mileageDisplay").get(0);
+				
+				System.out.print(fixLen(ind+"" ,-3) + "  ");
+				System.out.print(fixLen(title.text(),-30));
+				System.out.print(fixLen(internetPrice.text(),-20));
+				System.out.print(fixLen(mileageDisplay.text().replaceAll("Mileage:", "").trim(),-20));
+				System.out.println();
+				ind++;
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	public static String fixLen(String string, int length) {
+	    return String.format("%1$"+length+ "s", string);
+	}
+}
